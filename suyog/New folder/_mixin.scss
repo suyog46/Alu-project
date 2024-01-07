@@ -1,0 +1,12 @@
+@mixin flex($f:flex,$g,$jc:center,$fd:row){
+    display:$f;
+    gap:$g;
+    justify-content: $jc;
+    flex-direction:$fd;
+}
+@mixin res($max){
+    @media(max-width:$max) {
+        @content;
+    }
+}
+                                          

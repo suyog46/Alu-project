@@ -1,0 +1,259 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.ps {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.firstview {
+  color: white;
+  background: url("/img/home2.jpg");
+  background-size: cover;
+  height: 85vh;
+  border: 1px solid black;
+}
+@media (max-width: 480px) {
+  .firstview {
+    height: 500px;
+  }
+}
+.firstview .view-text {
+  top: 185px;
+  left: 100px;
+  line-height: 35px;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .firstview .view-text {
+    left: 10px;
+    top: 150px;
+    text-align: left;
+    width: 250px;
+  }
+}
+.firstview .view-text span {
+  color: rgb(81, 78, 241);
+}
+.firstview .view-text button {
+  background-color: rgb(81, 78, 241);
+}
+
+header {
+  height: 60px;
+  padding: 10px;
+}
+header img {
+  width: 50px;
+  height: 30px;
+}
+
+.bi-list {
+  display: none;
+}
+@media (max-width: 480px) {
+  .bi-list {
+    display: block;
+  }
+}
+
+nav {
+  border: 1px solid black;
+}
+nav ul {
+  list-style: none;
+  gap: 80px;
+}
+@media (max-width: 480px) {
+  nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 30px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    background-color: black;
+    padding-top: 20px;
+    z-index: 2323;
+    border-radius: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+  }
+}
+nav ul li a {
+  padding: 0px;
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  font-size: 18px;
+}
+
+@media (max-width: 480px) {
+  .icons {
+    padding-top: 20px;
+  }
+}
+
+.icons img {
+  width: 50px;
+  height: 50px;
+}
+
+.category .cat .catb {
+  width: 255px;
+  height: 300px;
+}
+.category .cat .catb:hover .catb-inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+.category .cat .catb .catb-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.category .cat .catb .catb-inner .catb-front {
+  position: absolute;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.category .cat .catb .catb-inner .catb-front h1 {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.category .cat .catb .catb-inner .catb-back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.category .cat .catb .catb-inner .catb-back .back-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgb(81, 78, 241);
+}
+.category .cat .catb .catb-inner .catf-1 {
+  background-size: cover;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-1.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-1.jpg");
+}
+.category .cat .catb .catb-inner .catb-1 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-1.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-1.jpg");
+}
+.category .cat .catb .catb-inner .catf-2 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-2.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-2.jpg");
+}
+.category .cat .catb .catb-inner .catb-2 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-2.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-2.jpg");
+}
+.category .cat .catb .catb-inner .catf-3 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-3.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-3.jpg");
+}
+.category .cat .catb .catb-inner .catb-3 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-3.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-3.jpg");
+}
+.category .cat .catb .catb-inner .catf-4 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-4.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-4.jpg");
+}
+.category .cat .catb .catb-inner .catb-4 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-4.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-4.jpg");
+}
+.category .cat .catb .catb-inner .catf-5 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-5.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-5.jpg");
+}
+.category .cat .catb .catb-inner .catb-5 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-5.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-5.jpg");
+}
+.category .cat .catb .catb-inner .catf-6 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-6.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-6.jpg");
+}
+.category .cat .catb .catb-inner .catb-6 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 15, 27, 0.397)), to(rgba(3, 43, 78, 0.404))), url("/img/cat-6.jpg");
+  background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url("/img/cat-6.jpg");
+}
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: whitesmoke;
+  z-index: 999999 !important;
+}
+.sticky nav ul a {
+  color: black;
+}
+
+input {
+  height: 41px;
+  width: 279px;
+}
+
+.but {
+  border: 3px solid rgb(81, 78, 241);
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+  width: 200px;
+}
+.but:hover {
+  background-color: rgb(81, 78, 241);
+  color: white;
+}
+
+.cr {
+  position: absolute;
+  font-size: x-large;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.register {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

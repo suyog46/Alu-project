@@ -1,0 +1,281 @@
+@import 'var';
+@import 'mixin';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.ps {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.firstview {
+    color: white;
+    background: url('/img/home2.jpg');
+    background-size: cover;
+    height:85vh;
+    border: $b;
+
+    @include res(480px) {
+        height: 500px;
+    }
+
+    .view-text {
+        @include res(480px) {
+            left: 10px;
+            top: 150px;
+            text-align: left;
+            width: 250px;
+        }
+
+        top: 185px;
+        left: 100px;
+        line-height: 35px;
+        text-align: center;
+
+        span {
+            color: $t;
+        }
+
+        button {
+            background-color: $t;
+        }
+    }
+}
+
+header {
+    height: 60px;
+    padding: 10px;
+
+    img {
+        width: 50px;
+        height: 30px;
+    }
+
+}
+
+.bi-list {
+    display: none;
+
+    @include res(480px) {
+        display: block;
+    }
+}
+
+nav {
+
+    border: $b;
+
+    @include res(480px) {
+        // display: none;
+    }
+
+    ul {
+        list-style: none;
+        // padding:0px;
+        gap: 80px;
+
+        @include res(480px) {
+            @include flex(flex, 30px, center, column);
+            background-color: black;
+            padding-top: 20px;
+            z-index: 2323;
+            border-radius: 20px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 200px;
+        }
+
+        li {
+            a {
+                padding: 0px;
+                color: white;
+                text-decoration: none;
+                border: 1px solid white;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.icons {
+    @include res(480px) {
+        padding-top: 20px;
+    }
+}
+
+.icons img {
+    width: 50px;
+    height: 50px;
+}
+
+.category {
+
+
+    .cat {
+        
+
+
+        .catb {
+            width: 255px;
+            height: 300px;
+
+            // border:1px solid black;
+            &:hover .catb-inner {
+                transform: rotateY(180deg);
+            }
+
+            .catb-inner {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                transition: 1s;
+                transform-style: preserve-3d;
+
+                .catb-front {
+                    position: absolute;
+                    background-size:contain;
+                    width: 100%;
+                    height: 100%;
+                    backface-visibility: hidden;
+
+                    h1 {
+                        color: white;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                .catb-back {
+                    transform: rotateY(180deg);
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-size: contain;
+                    // background-color: black;
+                    backface-visibility: hidden;
+
+                    .back-text {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
+                        color: $t;
+                    }
+                }
+                .catf-1 {
+                  background-size: cover;
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-1.jpg');
+                }
+
+                .catb-1 {
+              
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-1.jpg');
+                }
+
+                .catf-2 {
+                   
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-2.jpg');
+                }
+
+                .catb-2 {
+               
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-2.jpg');
+                }
+                .catf-3{
+        
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-3.jpg');
+                }
+
+                .catb-3{
+                    
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-3.jpg');
+                }
+                .catf-4{
+        
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-4.jpg');
+                }
+
+                .catb-4{
+                    
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-4.jpg');
+                }
+                .catf-5{
+        
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-5.jpg');
+                }
+
+                .catb-5{
+                    
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-5.jpg');
+                }
+                .catf-6{
+        
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-6.jpg');
+                }
+
+                .catb-6{
+                    
+                    background: linear-gradient(rgba(1, 15, 27, 0.397), rgba(3, 43, 78, 0.404)), url('/img/cat-6.jpg');
+                }
+            }
+        }
+
+
+    }
+  
+}
+.sticky{
+    position:fixed;
+    width:100%;
+    top:0;
+    background-color:whitesmoke;
+    z-index: 999999!important;
+    nav{
+        ul{
+            a{
+                color:black;
+            }
+        }
+    }
+}
+input {
+    height: 41px;
+    width: 279px;
+}
+.but{
+    border: 3px solid $t;
+    transition: 0.9s;
+    width: 200px;
+
+    &:hover {
+        background-color:$t;
+        color: white;
+    }
+
+}
+.cr{
+    position: absolute;
+    font-size: x-large;
+    top:0;
+    right:0;
+    cursor: pointer;
+
+}
+.register{
+    display:none;
+}
