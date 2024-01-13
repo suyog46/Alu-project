@@ -1,0 +1,107 @@
+@import 'var';
+@import 'mixin';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ps {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.c{
+    color:black;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    color: white;
+    @include res(992px){
+        color:black;
+    }
+}   
+
+
+ #logo {
+     width: 50px;
+     height: 30px;
+ }
+
+header {
+    transition: background-color 0.5s linear;
+    position:fixed;
+    width: 100%;
+
+    z-index: 999999!important;
+
+ 
+    nav{
+    img{
+        width:30px;
+        height:30px;
+    }
+        @include res(992px){
+            background-color:white;
+            color:black
+        }
+
+    }
+}
+
+
+@keyframes fadein{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+
+ .register input,.login input {
+    height: 41px;
+    width: 279px;
+  
+}
+.but{
+    border: 3px solid $t;
+    transition: 0.9s;
+    width: 200px;
+    &:hover {
+        background-color:$t;
+        color: white;
+    }
+
+}
+.lcr,.rcr{
+    position: absolute;
+    font-size: x-large;
+    top: -13px;;
+    right:-8px;
+    cursor: pointer;
+    &:hover{
+        color: red;
+    }
+}
+.register,.login{
+    display:none;
+    animation: fadein 1s linear;
+    z-index: 99999999999999!important;
+}
+
+.footer{
+    margin-top:200px;
+    .footer-back{
+        background-color: black;
+        height: 200px;
+        
+    }
+}
