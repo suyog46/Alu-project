@@ -1,4 +1,3 @@
-
 <?php
 include 'connect.php';
 
@@ -13,46 +12,43 @@ if (isset($_POST['submit'])) {
         $sql = "INSERT INTO users(username, email, password)
                 VALUES('$user_name', '$email', '$password')";
         $result = mysqli_query($con, $sql);
-             if ($result) {
-            echo'
+        if ($result) {
+            echo '
             <script>
         
         alert("successfull registration,please login") ;   
                 </script> 
-                '; 
-            }
-            else{
-                echo 'register problem';
-            }
-
-    }
-    else {
-            echo "Error in running the query. " . mysqli_error($con);
+                ';
+        } else {
+            echo 'register problem';
         }
-    } 
+
+    } else {
+        echo "Error in running the query. " . mysqli_error($con);
+    }
+}
 ?>
 
 <!-- for login -->
-<?php 
-    include 'connect.php';
-    if(isset($_POST['lsubmit'])){
-        $email=$_POST['email'];
-        $password=$_POST['password'];
-        if(!empty($email) && !empty($password)){
+<?php
+include 'connect.php';
+if (isset($_POST['lsubmit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if (!empty($email) && !empty($password)) {
         $sql = " SELECT * FROM users where email='$email' AND password ='$password'";
-        $result= mysqli_query($con,$sql);
-        $num= mysqli_num_rows($result);
-        if($num>0){
+        $result = mysqli_query($con, $sql);
+        $num = mysqli_num_rows($result);
+        if ($num > 0) {
             session_start();
-            $_SESSION['login']=true;
-            $_SESSION['user']=$email;
-            echo'';
-         }
-        else {
+            $_SESSION['login'] = true;
+            $_SESSION['user'] = $email;
+            echo '';
+        } else {
             echo "";
         }
     }
-    }
+}
 ?>
 
 
@@ -111,25 +107,37 @@ if (isset($_POST['submit'])) {
                     </form>
                     <?php
                     if (isset($_SESSION['login']) && $_SESSION['login']) {
-                       echo '
+                        echo '
                        <div class="ms-3">
-                       <a href="">
-                          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="rounded-circle" height="30" width="30" alt="">
-                          </a>
-                          </div>
+                            <ul class="navbar-nav">
+                       <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="rounded-circle" height="30" width="30" alt="">
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Hi</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item lg-out" href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                        </ul>
+                        </div>
+
                            ';
-                          
-                    }
-                    else{
-                        
-                            echo'
+
+                    } else {
+
+                        echo '
                             <button class="btn btn-primary mt-sm-3 mt-lg-0 mx-lg-3 sign-in">Sign in</button>
-                            ' ;
+                            ';
                     }
                     ?>
-                    </div>
+                </div>
             </div>
-           
+
         </nav>
 
     </header>
@@ -170,7 +178,7 @@ if (isset($_POST['submit'])) {
     </div>
     <?php
 
-?>
+    ?>
 
     <script src="./main.js">
     </script>

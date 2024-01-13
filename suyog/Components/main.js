@@ -58,3 +58,8 @@ function rhide() {
     // return false;
 
 }
+
+lo=document.querySelector(".lg-out");
+lo.addEventListener("click",()=>{
+    <?php include 'logout.php'?>
+})
