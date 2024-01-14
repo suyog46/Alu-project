@@ -1,7 +1,7 @@
 <?php
 include 'connect.php';
 
-
+session_start();
 if (isset($_POST['submit'])) {
     $user_name = $_POST['uname'];
     $email = $_POST['email'];
@@ -40,7 +40,7 @@ if (isset($_POST['lsubmit'])) {
         $result = mysqli_query($con, $sql);
         $num = mysqli_num_rows($result);
         if ($num > 0) {
-            session_start();
+            // session_start();
             $_SESSION['login'] = true;
             $_SESSION['user'] = $email;
             echo '';
@@ -120,7 +120,7 @@ if (isset($_POST['lsubmit'])) {
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item lg-out" href="#">Logout</a></li>
+                                <li><a  href="../Components/Logout.php" class="dropdown-item" >Logout</a></li>
                             </ul>
                         </li>
                         </ul>
@@ -176,9 +176,7 @@ if (isset($_POST['lsubmit'])) {
             <input type="submit" name="submit" value="submit" class="but rounded" required><br>
         </form>
     </div>
-    <?php
-
-    ?>
+ 
 
     <script src="./main.js">
     </script>

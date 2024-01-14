@@ -12,7 +12,7 @@ window.addEventListener('scroll', function () {
         document.querySelector('header').style.backgroundColor = 'transparent'
 
         navLinks.forEach(function (link) {
-            link.style.color = 'black';
+            link.style.color = 'white';
         })
     }
 })
@@ -59,7 +59,3 @@ function rhide() {
 
 }
 
-lo=document.querySelector(".lg-out");
-lo.addEventListener("click",()=>{
-    <?php include 'logout.php'?>
-})
