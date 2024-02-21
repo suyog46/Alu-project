@@ -30,6 +30,22 @@ body {
   }
 }
 
+@media (max-width: 992px) {
+  #small-sc {
+    color: rgb(255, 255, 255);
+  }
+}
+
+.l {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 3px 0px 0px 3px;
+  height: 37px;
+  width: 36px;
+  background-color: #e9ecef;
+}
+
 #logo {
   width: 50px;
   height: 30px;
@@ -73,6 +89,12 @@ header nav img {
 .register input, .login input {
   height: 41px;
   width: 279px;
+  border-color: #e9ecef;
+}
+
+.register .rd {
+  height: 20px;
+  width: 20px;
 }
 
 .but {
@@ -97,17 +119,27 @@ header nav img {
   color: red;
 }
 
+.register {
+  width: 830px;
+}
+
 .register, .login {
   display: none;
   -webkit-animation: fadein 1s linear;
           animation: fadein 1s linear;
   z-index: 99999999999999 !important;
+  color: white;
 }
 
 .footer {
-  margin-top: 200px;
+  margin-top: 100px;
+  padding: 60px;
+  line-height: 35px;
 }
-.footer .footer-back {
-  background-color: black;
-  height: 200px;
+.footer ul {
+  list-style: none;
+}
+.footer ul li a {
+  text-decoration: none;
+  color: white;
 }
