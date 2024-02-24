@@ -1,4 +1,5 @@
 <?php include 'connect.php';
+
 if (isset($_POST['submit'])) {
     $cid = $_POST['cid'];
     $uid = $_POST['uid'];
@@ -29,6 +30,19 @@ if (isset($_POST['submit'])) {
 
 <body>
     <?php include '../Components/Navbar.php' ?>
+    <?php 
+    if(($_SESSION['login'])!=true){
+        echo'
+        <script>
+        alert("please login first!");
+         window.location.href="./allcourses.php";
+
+        </script>
+
+        ';
+
+    }
+    ?>
     <br><br><br><br>
     <div class="container">
         <?php
