@@ -132,7 +132,7 @@ include './connect.php';
                                            <td> ' . $row["email"] . '</td>
                                            <td> ' . $row["password"] . '</td>
                                            <td class="text-end">
-                                           <a href=""../Courses/cp.php?id=' . $row["user_id"] . '"" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
+                                           <a href="../Courses/cp.php?id=' . $row["user_id"] . '" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
                                            <a href="../deleteteacher.php?id= ' . $row["user_id"] . '" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></a>
                                        </td>
                                         </tr>

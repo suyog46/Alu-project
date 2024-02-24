@@ -1,0 +1,33 @@
+.a:hover {
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  color: rgb(75, 95, 208);
+}
+.a:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 25%;
+  background-color: rgb(75, 95, 208);
+  width: 3px;
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+}
+.a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 25%;
+  background-color: rgb(75, 95, 208);
+  height: 3px;
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+}
+.a:hover::after {
+  width: 100%;
+}
+.a:hover::before {
+  height: 100%;
+}

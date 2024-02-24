@@ -1,6 +1,5 @@
 <?php 
 include 'connect.php';
-
 ?>
 <!doctype html>
 
@@ -11,6 +10,7 @@ include 'connect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard | Bootstrap Simple Admin Template</title>
+    <link rel="stylesheet" href="css/style.css">
     <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
     <link href="assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
@@ -21,8 +21,8 @@ include 'connect.php';
 </head>
 
 <body>
-    <div class="wrapper">
-        <nav id="sidebar" class="active">
+<div class="wrapper">
+<nav id="sidebar" class="active">
             <div class="sidebar-header">
             <img src="https://marketplace.canva.com/EAFauoQSZtY/1/0/1600w/canva-brown-mascot-lion-free-logo-qJptouniZ0A.jpg"
                         alt="" id="logo" height="40" width="100" class="object-fit-cover">
@@ -102,6 +102,7 @@ include 'connect.php';
                     </ul>
                 </div>
             </nav>
+           
             <!-- end of navbar navigation -->
             <div class="content">
                 <div class="container">
@@ -126,9 +127,8 @@ include 'connect.php';
                                                 <p class="detail-subtitle">Total students</p>
                                                 <span class="number">
                                                     <?php 
-                                                     $sql="SELECT * FROM users
-                                                    
-                                                     WHERE usertype='student';";
+                                                    $sql="SELECT * FROM users
+                                                    WHERE usertype='student';";
                                                     $result=mysqli_query($con, $sql);
                                                     $num=mysqli_num_rows($result);
                                                     echo $num;
@@ -185,8 +185,9 @@ include 'connect.php';
                                                 <p class="detail-subtitle">Total Teachers</p>
                                                 <span class="number">
                                                 <?php 
-                                                  $sql="SELECT * FROM users
-                                                  WHERE usertype='teacher';";
+                                                    $sql="SELECT * FROM users
+                                                    
+                                                    WHERE usertype='teacher';";
                                                     $result=mysqli_query($con, $sql);
                                                     $num=mysqli_num_rows($result);
                                                     echo $num;
@@ -237,6 +238,26 @@ include 'connect.php';
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-6 col-md-6 col-lg-3 mt-3 mx-auto">
+                        <a href="../Home/index.php">
+                            <div class="card a">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="icon-big text-center">
+                                            <i class="fas fa-home"></i> 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8 text-center">
+                                            <h1 class="">Visit site</h1>
+                                            
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            </a>
+                        </div>
                     <!-- <div class="row">
                         <div class="col-md-12">
                             <div class="row">

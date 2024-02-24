@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
                 <h1> $' . $row["price"] . '</h1>
                  
                    ';
-                    if ($_SESSION['usertype'] == "teacher") {
+                    if (($_SESSION['usertype']) == "teacher"||($_SESSION['usertype'])=="Admin") {
                         echo '';
                     } else {
                         echo '

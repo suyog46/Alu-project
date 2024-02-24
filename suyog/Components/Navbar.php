@@ -119,8 +119,13 @@ if (isset($_POST['lsubmit'])) {
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Hi ' . $_SESSION["username"] . '</a></li>
                                 <li><a class="dropdown-item" href="../Courses/cp.php?id=' . $_SESSION["loginid"] . '">Edit profile</a></li>
-                                <li><a class="dropdown-item" href="../Courses/outercourse.php?id=' . $_SESSION["loginid"] . '">Your courses</a></li>
                                 ';
+                                if (($_SESSION['usertype']) == "teacher"||($_SESSION['usertype'])=="student") {
+                                    echo '
+                                    <li><a class="dropdown-item" href="../Courses/outercourse.php?id=' . $_SESSION["loginid"] . '">Your courses</a></li>
+                                    ';
+                                    
+                                }
                         if (($_SESSION['usertype']) == "teacher") {
                             echo '
                                 <li><a class="dropdown-item" href="../course-form/forms.php?id=' . $_SESSION["loginid"] . '"> ADD Your courses</a></li>

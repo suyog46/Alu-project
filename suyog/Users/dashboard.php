@@ -10,6 +10,7 @@ include 'connect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard | Bootstrap Simple Admin Template</title>
+    <link rel="stylesheet" href="css/style.css">
     <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
     <link href="assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
@@ -237,6 +238,26 @@ include 'connect.php';
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-6 col-md-6 col-lg-3 mt-3 mx-auto">
+                        <a href="../Home/index.php">
+                            <div class="card a">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="icon-big text-center">
+                                            <i class="fas fa-home"></i> 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8 text-center">
+                                            <h1 class="">Visit site</h1>
+                                            
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            </a>
+                        </div>
                     <!-- <div class="row">
                         <div class="col-md-12">
                             <div class="row">
