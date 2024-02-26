@@ -180,12 +180,19 @@ include '../Components/countcourse.php';
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 $checked = [];
                                                 if (isset($_GET['category'])) {
-                                                    $checked=$_GET['category']; //gets the cat_name from the get method in the form of array
+                                                    $checked = $_GET['category']; //gets the cat_name from the get method in the form of array
                                                 }
                                                 echo '
                         <div class="">
-                       <input type="checkbox" name="category[]" class="" value=' . $row["cat_name"] . ' />
-                      <label class="" for="">' . $row["cat_name"] . '</label>
+                       <input type="checkbox" name="category[]"  id= "' . $row["cat_name"] . '" value=' . $row["cat_name"] . ' ';
+                                                if (in_array($row["cat_name"], $checked)) {
+                                                    echo 'checked ';
+                                                } else {
+                                                    echo "";
+
+                                                }
+                                                echo '/>
+                      <label class="" for="' . $row["cat_name"] . '">' . $row["cat_name"] . '</label>
                     </div>
                         ';
                                             }
@@ -231,8 +238,11 @@ include '../Components/countcourse.php';
                         $sql = "SELECT * FROM courses
              INNER JOIN users
              ON courses.uid=users.user_id
-         
              where 1";
+                        if (isset($_GET['titlee']) && $_GET['titlee'] != null) {
+                            $titlee = $_GET['titlee'];
+                            $sql .= " AND title = '$titlee'";
+                        }
                         if (isset($_GET['submit'])) {
                             if (isset($_GET['category'])) {
                                 $catchecked = [];

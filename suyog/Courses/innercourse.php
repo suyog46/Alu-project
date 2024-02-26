@@ -27,9 +27,10 @@ if (isset($_POST['submit'])) {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-
 <body>
-    <?php include '../Components/Navbar.php' ?>
+<section class="headf">
+<?php include '../Components/Navbar.php'?>
+</section>
     <?php 
     if(($_SESSION['login'])!=true){
         echo'
@@ -63,10 +64,12 @@ if (isset($_POST['submit'])) {
                     echo '
         <h1 class="fw-bold fs-3">    
         </h1>
-        <div class="container">
-            <div class="row">
-            <div class="col-lg-8">
-            <video width="640" height="360" controls>
+        <div class="container shadow p-5">
+            <div class="row ">
+            <div class="col-lg-8 ">
+            <h1 class="">' . $row["title"] . '</h1>
+            <br>
+            <video width="730" height="360" controls>
             <source src="../Videos/' . $row["overview"] . '" type="video/mp4">
         </video>
     
@@ -125,32 +128,60 @@ if (isset($_POST['submit'])) {
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container mt-5 ">
                 <div class="row">
-                    <div class="lg-4">
+                    <div class="col-lg-4">
                         <div class="btn  btn-outline-primary   b1"> Overview
                         </div>
                         <div class="btn btn-outline-primary b2">Curriculum</div>
                         <div class="btn btn-outline-primary b3">Instructor</div>
                     </div>
+                    <div class="col-lg-12 t1 pt-3">
+                        <h3>Course description</h3>
+                        ' . $row["detaildescription"] . '
+                  
+        <br><br>
+
+                    <h3>Who is this course for</h3>
+                    ' . $row["targetaudience"] . '
+        
+                    </div>
+                    <div class="col-lg-12 t2 pt-3">I am text2</div>
+                    <div class="col-lg-12 t3 pt-3 ">
+                    ';
+                    $id=$row['uid'];
+                    $sqlo = "SELECT * FROM users
+                    INNER JOIN courses
+                    on users.user_id=courses.uid
+                     where user_id=$id ";
+                     $resulto=mysqli_query($con,$sqlo);
+                     while($row=mysqli_fetch_assoc($resulto)){
+                        echo'
+                        <div class="row">
+                        <div class="col-1">
+                        <img src="data:image/jpeg;base64,' . $row["userimage"] . '"class="rounded-circle object-fit-cover" height="100" width="100">
+                        <h5>'.$row["username"].'</h5>
+                        </div>
+                        ';
+                     
+                    echo'
+
+                    <div class="col-lg-2">
+                    ' . $row["aboutyourself"] . '
+                    </div>
+                    </div>
+                    </div>
+                     
+                
+                    
+                </div>
                 </div>
             </div>
-        <div class="container mt-5">
-            <div class=" t1 shadow ">
-                <h1>Course description</h1>
-                ' . $row["detaildescription"] . '
-          
-
-            <h1>Who is this course for</h1>
-            ' . $row["targetaudience"] . '
-
-            </div>
-            <div class=" t2 shadow ">I am text2</div>
-            <div class=" t3 shadow ">' . $row["aboutyourself"] . '</div>
-        </div>
+   
         </div>
             
       ';
+                     }
                 }
             }
         }

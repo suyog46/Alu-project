@@ -114,13 +114,29 @@ header nav img {
   top: -13px;
   right: -8px;
   cursor: pointer;
+  color: red;
 }
 .lcr:hover, .rcr:hover {
+  color: rgb(10, 35, 108);
+}
+
+.pv {
+  display: block;
+  color: grey;
+  font-style: italic;
+  font-size: x-small;
+}
+
+.pe {
   color: red;
+  font-style: italic;
+  font-size: x-small;
 }
 
 .register {
-  width: 830px;
+  position: relative;
+  width: 400px;
+  padding: 0px 30px;
 }
 
 .register, .login {

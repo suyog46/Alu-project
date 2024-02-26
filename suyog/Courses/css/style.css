@@ -15,6 +15,11 @@ ul {
   list-style: none;
 }
 
+.headf {
+  height: 20vh;
+  background-image: url("../home2.jpg");
+}
+
 .head {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(2, 25, 155, 0.856)), to(rgba(25, 19, 112, 0.781))), url("/image/student-friends-studying-together-UNCHR5E.jpg");
   background: linear-gradient(rgba(2, 25, 155, 0.856), rgba(25, 19, 112, 0.781)), url("/image/student-friends-studying-together-UNCHR5E.jpg");
@@ -56,6 +61,19 @@ ul {
 }
 .box p {
   font-size: 13px;
+}
+
+.pv {
+  display: block;
+  color: grey;
+  font-style: italic;
+  font-size: x-small;
+}
+
+.pe {
+  color: red;
+  font-style: italic;
+  font-size: x-small;
 }
 
 .card:hover {

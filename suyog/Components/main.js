@@ -60,17 +60,5 @@ function rhide() {
 
 }
 
-function CheckPassword(password) {
-    const pass_rgex =
-      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
-  
-    if (password.value.match(pass_rgex)) {
-      return true;
-    }   
-     else {
-      document.querySelector(".perror").innerHTML =
-        " * Password must contain:<br> Minimum 8 characters<br> 1 uppercase<br> 1 lowercase<br> 1 number <br> 1special character.";
-        return false;
-    }
-}
+
 

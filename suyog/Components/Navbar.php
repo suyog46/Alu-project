@@ -1,6 +1,5 @@
 <?php
 include 'connect.php';
-
 session_start();
 if (isset($_POST['submit'])) {
     $user_name = $_POST['uname'];
@@ -8,30 +7,53 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $cpassword = $_POST['pconfirm'];
     $usertype = $_POST['logintype'];
-
     if (isset($_FILES["pimage"]) && $_FILES["pimage"]["error"] == 0) {
         $image = $_FILES["pimage"]["tmp_name"];
         $imageBinary = base64_encode(file_get_contents($image));
     }
-    if ($password === $cpassword) {
-        $sql = "INSERT INTO users(username, email, password,usertype,userimage)
+    $sqli = "SELECT * FROM users WHERE email='$email'";
+    $resulti = mysqli_query($con, $sqli);
+    if (mysqli_num_rows($resulti) > 0) {
+        $emailerror = "Email Already exists.";
+    } 
+    else{
+        $sqlu = "SELECT * FROM users WHERE username='$user_name'";
+        $resultu = mysqli_query($con, $sqlu);
+        if (mysqli_num_rows($resultu) > 0) {
+            $nameerror = "Username Already exists.";
+        } 
+    
+
+    else {
+
+        if (($password === $cpassword)) {
+
+            $sql = "INSERT INTO users(username, email, password,usertype,userimage)
                 VALUES('$user_name', '$email', '$password','$usertype','$imageBinary')";
-        $result = mysqli_query($con, $sql);
-        if ($result) {
-            echo '
+            $result = mysqli_query($con, $sql);
+            if ($result) {
+                echo '
             <script>
         
         alert("successfull registration,please login") ;   
                 </script> 
                 ';
-        } else {
-            echo 'register problem';
-        }
+            } 
+            else {
+                echo 'Insertion problem';
+            }
 
-    } else {
-        echo "Error in running the query. " . mysqli_error($con);
+        } else {
+            echo '
+        <script>
+        alert("please check the credential and try again");
+        </script>
+        ';
+        }
     }
 }
+}
+
 ?>
 
 <!-- for login -->
@@ -53,10 +75,8 @@ if (isset($_POST['lsubmit'])) {
             $_SESSION['user'] = $email;
             $_SESSION['usertype'] = $row['usertype'];
             $_SESSION['userimage'] = $row['userimage'];
-        }
-         else {
-            $invalid="Invalid username or password";
-
+        } else {
+            $invalid = "Invalid username or password";
         }
     }
 }
@@ -100,9 +120,10 @@ if (isset($_POST['lsubmit'])) {
                             <a class="nav-link" href="../Courses/allcourses.php">Courses</a>
                         </li>
                     </ul>
-                    <form class="d-lg-flex gap-4  d-none" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    <form method="GET" action="../Courses/allcourses.php" class="d-lg-flex gap-4  d-none" role="search">
+                        <input class="form-control me-2" type="search" name="titlee" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submits">Search</button>
                     </form>
 
 
@@ -117,15 +138,15 @@ if (isset($_POST['lsubmit'])) {
         <img src="data:image/jpeg;base64,' . $_SESSION["userimage"] . '"class="rounded-circle object-fit-cover" height="30" width="30">
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Hi ' . $_SESSION["username"] . '</a></li>
+                                <li><p class="dropdown-item" href="#">Hi ' . $_SESSION["username"] . '</p></li>
                                 <li><a class="dropdown-item" href="../Courses/cp.php?id=' . $_SESSION["loginid"] . '">Edit profile</a></li>
                                 ';
-                                if (($_SESSION['usertype']) == "teacher"||($_SESSION['usertype'])=="student") {
-                                    echo '
+                        if (($_SESSION['usertype']) == "teacher" || ($_SESSION['usertype']) == "student") {
+                            echo '
                                     <li><a class="dropdown-item" href="../Courses/outercourse.php?id=' . $_SESSION["loginid"] . '">Your courses</a></li>
                                     ';
-                                    
-                                }
+
+                        }
                         if (($_SESSION['usertype']) == "teacher") {
                             echo '
                                 <li><a class="dropdown-item" href="../course-form/forms.php?id=' . $_SESSION["loginid"] . '"> ADD Your courses</a></li>
@@ -169,117 +190,162 @@ if (isset($_POST['lsubmit'])) {
 
 
     <!-- Login -->
-    <div class="login bg-dark ps p-5 rounded " 
-    <?php  if (isset($invalid)){
-          echo'style="display:block";'; 
+    <div class="login bg-light ps p-5 rounded " <?php if (isset($invalid)) {
+        echo 'style="display:block";';
+    } else {
+        echo 'style="display:none";';
     }
-    else{
-        echo'style="display:none";'; 
-    }
-        ?> >
-         
+    ?>>
+
         <i class="bi bi-x-circle-fill lcr"></i>
-        <h1>SIGN IN</h1>
-        <br><br>
-        <?php 
-                    if (isset($invalid)){
-                        echo '
+        <h1 class="text-primary-emphasis">SIGN IN</h1>
+        <br>
+        <?php
+        if (isset($invalid)) {
+            echo '
                         <div class="bg-danger-subtle text-dark border border-danger border-3 px-3 py-2 w-100">
                         Invalid username or password<br>
                         Please try Again!
                 </div>
                         ';
-                        
-                    }
-                    ?>
+
+        }
+        ?>
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
-            <label for="email">Email</label><br>
+            <label for="email" class="text-primary-emphasis">Email</label><br>
             <div class="position-relative">
-            <input type="email" name="email" class="rounded ps-5" required>
-            <div class="text-dark fs-4 l">
-                        <i class="bi bi-person-circle px-1"></i>
+                <input type="email" name="email" class="rounded ps-5" required>
+                <div class="text-dark fs-4 l">
+                    <i class="bi bi-person-circle px-1"></i>
+                </div>
             </div>
-             </div>
             <br><br>
 
-            <label for="password">Password</label><br>
+            <label for="password" class="text-primary-emphasis">Password</label><br>
             <div class="position-relative">
-            <input type="password" class="rounded ps-5"  name="password" required><br><br>
-            <div class="text-dark fs-4 l">
-                        <i class="bi  bi-key px-1"></i>
-            </div>
+                <input type="password" class="rounded ps-5" name="password" required><br><br>
+                <div class="text-dark fs-4 l">
+                    <i class="bi  bi-key px-1"></i>
                 </div>
+            </div>
             <input type="submit" name="lsubmit" value="Login" class="btn btn-danger" required><br><br>
 
-            <p>new user?</p><a href="" class="btn btn-outline-primary reg">Register
+            <p class="text-primary-emphasis">New User?</p><a href="" class="btn btn-outline-primary reg">Register
                 here
             </a></p>
-       
+
         </form>
 
     </div>
 
 
     <!-- Register -->
-    <div class="register  ps  rounded bg-light text-dark">
+    <div class="register  ps  rounded bg-light text-dark" <?php if( (isset($emailerror))||(isset($nameerror))) {
+        echo 'style="display:block";';
+    } else {
+        echo 'style="display:none";';
+    }
+    ?>>
         <i class="bi bi-x-circle-fill rcr"></i>
-        <form action="<?php $_SERVER['PHP_SELF'] ?>" onsubmit="return CheckPassword(document.form1.password)"
-        name="form1" method="POST" enctype="multipart/form-data">
-        <div class="row">
-            <div class="col-6">
-                    <img src="../Components/register.jpg" alt="" class="w-100 object-fit-content h-100">
-                </div>
-                <div class="col-6 pb-3">
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" name="form1" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-12 pb-3">
                     <h1 class="mt-4">Register</h1>
-        <br><br>
+                    <br>
+
                     <div class="position-relative">
                         <input type="text" name="uname" class="rounded ps-5" placeholder="Username" autofocus required>
                         <div class="text-dark fs-4 l">
-                        <i class="bi bi-person-circle px-1"></i>
+                            <i class="bi bi-person-circle px-1"></i>
                         </div>
+                    </div>
+                    <div class=" w-70 pe">
+                        <?php
+                        if (isset($nameerror)) {
+                            echo '
+                        Name already exists!
+                        ';
+                        } else {
+                            echo '';
+                        }
+                        ?>
+
                     </div>
                     <br>
                     <div class="position-relative">
-                    <input type="email" name="email" class="rounded ps-5" placeholder="Email" required>
-                    <div class="fs-4 l">
-                        <i class="bi bi-envelope-check px-1"></i>
-                     </div>    
-                </div>
-                <br>
-                <div class="position-relative">
+                        <input type="email" name="email" class="rounded ps-5" placeholder="Email" required>
+                        <div class="fs-4 l">
+                            <i class="bi bi-envelope-check px-1"></i>
+                        </div>
+                    </div>
+                    <div class=" w-70 pe">
+                        <?php
+                        if (isset($emailerror)) {
+                            echo '
+                        Email already exists!
+                        ';
+                        } else {
+                            echo '';
+                        }
+                        ?>
 
-                    <input type="password" class="rounded password ps-5" id="password" name="password"  placeholder="Password"required>
-                    <div class="fs-4 l">
-                        <i class="bi bi-key-fill px-1"></i>
-                     </div>  
-                </div>    
-                <br>
-                <div class="position-relative">
-            
-                    <input type="password" name="pconfirm" id="pconfirm" class="rounded ps-5" placeholder="Confirm Password">
-                    <div class="fs-4 l">
-                        <i class="bi bi-key-fill px-1"></i>
-                     </div>  
-                </div>
+                    </div>
                     <br>
-                    
+                    <div class="position-relative">
+
+                        <input type="password" class="rounded password ps-5" id="password" name="password"
+                            placeholder="Password" required>
+                        <div class="fs-4 l">
+                            <i class="bi bi-key-fill px-1"></i>
+                        </div>
+                    </div>
+                    <div class=" w-70 pv">
+                        * Password must contain:<br> Minimum 8 characters, 1 uppercase , 1 lowercase, 1 number and
+                        1special character.*
+                    </div>
+                    <br>
+                    <div class="position-relative">
+
+                        <input type="password" name="pconfirm" id="pconfirm" class="rounded ps-5"
+                            placeholder="Confirm Password" required>
+                        <div class="fs-4 l">
+                            <i class="bi bi-key-fill px-1"></i>
+                        </div>
+                    </div>
+                    <br>
+
                     <label for="pconfirm ms-4">Login as</label><br>
-                    <input type="radio" name="logintype" id="teacher" class="rd ms-2 mt-2" value="teacher"> <label for="teacher">
-                         Teacher
-                    </label><br>
-                    <input type="radio" name="logintype" id="student" class="rd ms-2 mt-2" value="student"> <label for="student">
-                         Student
+                    <input type="radio" name="logintype" id="teacher" class="rd ms-2 mt-2" value="teacher" required>
+                    <label for="teacher">
+                        Teacher
+                    </label>
+                    <input type="radio" name="logintype" id="student" class="rd ms-2 mt-2" value="student" required>
+                    <label for="student">
+                        Student
                     </label>
                     <br><br>
                     <label for="pimage">Choose a profile picture</label><br>
-                    <input type="file" name="pimage" id="pimage" class="rounded"><br><br>
-                    <input type="submit" name="submit" value="submit" class="but rounded" required><br>
+                    <input type="file" name="pimage" id="pimage" class="rounded" required><br><br>
+                    <input type="submit" name="submit" value="submit" class="but rounded"
+                        onclick="return CheckPassword()" required><br>
                 </div>
 
             </div>
         </form>
     </div>
-
+    <script>
+        function CheckPassword() {
+            var password = document.querySelector("#password");
+            const pass_regex =
+                "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+            if (!password.value.match(pass_regex)) {
+                document.querySelector(".pv").style.color = "red";
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
 
     <script src="./main.js">
     </script>
