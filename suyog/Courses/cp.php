@@ -14,20 +14,19 @@ if (isset($_POST['csubmit'])) {
   $sqli = "SELECT * FROM users WHERE email='$email' and user_id!='$id'";
   $resulti = mysqli_query($con, $sqli);
   if (mysqli_num_rows($resulti) > 0) {
-    echo 'email';
+
     $cpemailerror = "Email Already exists.";
   } 
   else {
     $sqlu = "SELECT * FROM users WHERE username='$user_name' and user_id!='$id'";
     $resultu = mysqli_query($con, $sqlu);
     if (mysqli_num_rows($resultu) > 0) {
-      echo 'name';
-
+     
       $cpnameerror = "Username Already exists.";
     }
      else {
       if ($password == $cpassword) {
-        echo 'yah';
+       
 
         $sql = "UPDATE users
       SET
@@ -155,7 +154,7 @@ if (isset($_POST['csubmit'])) {
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" placeholder="' . $row["password"] . '" value="' . $row["password"] . '" class="form-control" required>
+                <input type="password" name="password"  class="form-control" required>
               </div>
               <div class="mb-3">
               <label for="password" class="form-label"> Confirm Password</label>

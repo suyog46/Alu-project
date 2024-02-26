@@ -247,7 +247,7 @@ include '../Components/countcourse.php';
                             if (isset($_GET['category'])) {
                                 $catchecked = [];
                                 $catchecked = $_GET['category'];
-                                $RcategoryString = implode("', '", $catchecked); //array ko content lai string ma chane garna
+                                $RcategoryString = implode("', '", $catchecked); //array ko content lai string ma change garna
                                 $sql .= " AND category IN ('$RcategoryString')";
                             }
                             if (isset($_GET['min_p']) && $_GET['min_p'] != null) {
@@ -284,12 +284,12 @@ include '../Components/countcourse.php';
                                 echo '
           <div class="col-4">
           <div class="card bg-body-secondary" style="width: 20rem;" onmouseover="dis()">
-          <div class="card-head card-img-top" style="height:15rem;">
+          <div class="card-head card-img-top">
             <img src="data:image/jpeg;base64,' . $row["image"] . ' "class="w-100 h-100 object-fit-cover">
             <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
             </h2>
             <h2 class=" btn btn-transparent cate">
-                <div class="catr position-relative">  <p class="pr">' . $row["category"] . '
+                <div class="catr position-relative">  <p class="pr text-light">' . $row["category"] . '
                 </p>
            </div>
          
@@ -302,7 +302,7 @@ include '../Components/countcourse.php';
                   <p class="card-text">' . $row["description"] . '</p>
                 </div>
                 <ul class="px-3">
-                  <li class=" d-flex justify-content-between">Published by:<img src="data:image/jpeg;base64,' . $row["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $row["username"] . '</li>
+                  <li class=" d-flex gap-2 justify-content-start">Published by:<img src="data:image/jpeg;base64,' . $row["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $row["username"] . '</li>
                   <li class=" d-flex justify-content-between"><p><i class="bi bi-clock-fill pe-2"></i>' . $row["duration"] . 'hrs</p>
                   ';
                                 $cid = $row["course_id"];

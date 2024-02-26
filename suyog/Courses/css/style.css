@@ -76,6 +76,9 @@ ul {
   font-size: x-small;
 }
 
+.card {
+  height: 400px;
+}
 .card:hover {
   -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -87,7 +90,7 @@ ul {
   left: 0;
   bottom: 0;
   height: 25%;
-  background-color: rgb(75, 95, 208);
+  background-color: black;
   width: 3px;
   -webkit-transition: 0.9s;
   transition: 0.9s;
@@ -98,7 +101,7 @@ ul {
   left: 0;
   bottom: 0;
   width: 25%;
-  background-color: rgb(75, 95, 208);
+  background-color: black;
   height: 3px;
   -webkit-transition: 0.9s;
   transition: 0.9s;
@@ -110,9 +113,13 @@ ul {
   height: 100%;
 }
 .card-head {
+  height: 195px;
   position: relative;
-  width: 100%;
-  padding: 0px 3px;
+  padding-left: 3px;
+}
+.card-body {
+  height: 200px;
+  overflow: hidden;
 }
 .card:hover .pre {
   opacity: 1;

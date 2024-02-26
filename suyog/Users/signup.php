@@ -6,13 +6,19 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cpassword = $_POST['pconfirm'];
+    $hashedpassword=password_hash($cpassword,PASSWORD_DEFAULT);
     if (isset($_FILES["pimage"]) && $_FILES["pimage"]["error"] == 0) {
         $image = $_FILES["pimage"]["tmp_name"];
         $imageBinary = base64_encode(file_get_contents($image));
     }
+    $sqli = "SELECT * FROM users WHERE email='$email'";  //same email nahuna ko lagi
+    $resulti = mysqli_query($con, $sqli);
+    if (mysqli_num_rows($resulti) > 0) {
+        $emailerror = "Email Already exists.";
+    } else{
     if ($password === $cpassword) {
         $sql = "INSERT INTO users(username, email, password,usertype,userimage)
-                VALUES('$user_name', '$email', '$password','Admin','$imageBinary')";
+                VALUES('$user_name', '$email', '$hashedpassword','Admin','$imageBinary')";
         $result = mysqli_query($con, $sql);
         if ($result) {
             echo '
@@ -24,10 +30,10 @@ if (isset($_POST['submit'])) {
         } else {
             echo 'register problem';
         }
-
     } else {
-        echo "Error in running the query. " . mysqli_error($con);
+        $perror="error";
     }
+}
 }
 ?>
 <!doctype html>
@@ -38,6 +44,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Sign up | Bootstrap Simple Admin Template</title>
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <link href="assets/css/auth.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -60,15 +67,42 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="mb-3 text-start">
                             <label for="email" class="form-label">Email adress</label>
+                            <div class=" w-70 pe">
+                            <?php
+                            if (isset($emailerror)) {
+                                echo '
+                            Email already exists!
+                            ';
+                            } else {
+                                echo '';
+                            }
+                            ?>
+    
+                        </div>
                             <input type="email" class="form-control" placeholder="Enter Email"  name ="email"required>
                         </div>
                         <div class="mb-3 text-start">
                             <label for="password" class="form-label">Password</label>
+                            
                             <input type="password" class="form-control" placeholder="Password"  name ="password"required>
                         </div>
                         
-                        <div class="mb-3">
-                            <input type="password" class="form-control" placeholder="Confirm password" name ="pconfirm" required>
+                        <div class="mb-3 text-start">
+                        <label for="cpassword" class="form-label ">Confirm Password</label>
+                        <div class=" w-70 pe">
+                            <?php
+                            if (isset($perror)) {
+                                echo '
+                            Check the password and try again!
+                            ';
+                            } else {
+                                echo '';
+                            }
+                            ?>
+    
+                        </div>
+
+                            <input type="password" class="form-control" id="cpassword" placeholder="Confirm password" name ="pconfirm" required>
                         </div>
                         <br>
                         <div class="mb-3 text-start">

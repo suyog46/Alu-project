@@ -217,24 +217,3 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
-<!-- <div class="mb-3 row">
-                                    <label class="col-sm-2">Input with success</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control is-valid">
-                                    </div>
-                                </div>
-                                <div class="line"></div><br>
-                                <div class="mb-3 row">
-                                    <label class="col-sm-2">Input with warning</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control is-invalid">
-                                    </div>
-                                </div>
-                                <div class="line"></div><br>
-                                <div class="mb-3 row has-danger">
-                                    <label class="col-sm-2">Input with error</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control is-invalid">
-                                        <div class="invalid-feedback">Read error message here.</div>
-                                    </div>
-                                </div> -->

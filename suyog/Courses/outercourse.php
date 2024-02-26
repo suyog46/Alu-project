@@ -1,5 +1,6 @@
 <?php
 include 'connect.php';
+include '../Components/countcourse.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,82 +25,117 @@ include 'connect.php';
   <?php
   include '../Components/Navbar.php';
   ?>
-  <section class="head position-relative">
-    <div class="container-fluid">
-      <div class="row ">
-        <div class="col-lg-8  ">
-          <div class="head-left mx-3 mt-5 pt-5">
-            <h2>
-              Join the Millions Learning to
-            </h2>
-            <h6>Want to excel at finance or managing people? Our online business and management courses will
-              help.Further
-              your career with communication, networking</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="box position-absolute shadow ">
-      <div class="row  ">
-        <div class="col-lg-2">
-          <div class="imgc">
-            <a href="outercourse.php?categogry='"><img src="image/business.icon.png" alt=""></a>
-            <div class="text  pt-2  ">
-              <h5>Business</h5>
-              <p>783 courses</p>
+     <section class="head position-relative">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-lg-8  ">
+                    <div class="head-left mx-3 mt-5 pt-5">
+                        <h2>
+                            Join the Millions Learning to Code
+                        </h2>
+                        <h6>Want to excel at finance or managing people? Our online business and management courses will
+                            help.Further
+                            your career with communication, networking</h6>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="box position-absolute shadow ">
+            <div class="row  ">
+                <div class="col-lg-2">
+                    <div class="imgc">
+                        <a href="outercourse.php?categogry='"><img src="image/business.icon.png" alt=""></a>
+                        <div class="text  pt-2  ">
+                            <h5>Business</h5>
+                            <p>
+                                <?php
+                                $cat = "business";
+                                echo totalcat($cat);
+                                ?>
+                                courses
+                            </p>
+                        </div>
 
 
-          </div>
-        </div>
-        <div class="col-lg-2 ">
-          <div class="imgc h-100">
-            <a href=""><img src="image/creative.icon.png" alt=""></a>
-            <div class="text  pt-2  ">
-              <h5>Creative & Arts</h5>
-              <p>540 courses</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 ">
+                    <div class="imgc h-100">
+                        <a href=""><img src="image/creative.icon.png" alt=""></a>
+                        <div class="text  pt-2  ">
+                            <h5>Creative & Arts</h5>
+                            <p>
+                                <?php
+                                $cat = "art";
+                                echo totalcat($cat);
+                                ?>
+                                courses
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="imgc h-100 ">
+                        <a href=""><img src="image/environment.icon.png" alt=""></a>
+                        <div class="text  pt-2  ">
+                            <h5>Environment</h5>
+                            <p>
+                                <?php
+                                $cat = "environment";
+                                echo totalcat($cat);
+                                ?>courses
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 ">
+                    <div class="imgc  h-100">
+                        <a href=""><img src="image/tech.icon.png" alt=""></a>
+                        <div class="text  pt-2  ">
+                            <h5>Programming</h5>
+                            <p>
+                                <?php
+                                $cat = "programming";
+                                echo totalcat($cat);
+                                ?>
+                                courses
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="imgc  h-100 ">
+                        <a href=""><img src="image/history.icon.png" alt=""></a>
+                        <div class="text  pt-2  ">
+                            <h5>History</h5>
+                            <p>
+                                <?php
+                                $cat = "history";
+                                echo totalcat($cat);
+                                ?>
+                                courses
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="imgc  h-100">
+                        <a href=""><img src="image/literaure.icon.png" alt=""></a>
+                        <div class="text  pt-2  ">
+                            <h5>Others</h5>
+                            <p>
+                                <?php
+                                $cat = "others";
+                                echo totalcat($cat);
+                                ?>
+                                courses
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="col-lg-2">
-          <div class="imgc h-100 ">
-            <a href=""><img src="image/environment.icon.png" alt=""></a>
-            <div class="text  pt-2  ">
-              <h5>Environment</h5>
-              <p>230 courses</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 ">
-          <div class="imgc  h-100">
-            <a href=""><img src="image/tech.icon.png" alt=""></a>
-            <div class="text  pt-2  ">
-              <h5>Tech & Coding</h5>
-              <p>785 courses</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <div class="imgc  h-100 ">
-            <a href=""><img src="image/history.icon.png" alt=""></a>
-            <div class="text  pt-2  ">
-              <h5>History</h5>
-              <p>342 courses</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <div class="imgc  h-100">
-            <a href=""><img src="image/literaure.icon.png" alt=""></a>
-            <div class="text  pt-2  ">
-              <h5>Literature</h5>
-              <p>567 courses</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
   <br><br>
   <section class="mb pt-5 mt-5">
     <div class="container">
@@ -116,13 +152,13 @@ include 'connect.php';
             while ($row = mysqli_fetch_assoc($result)) {
               echo '
               <div class="col-4">
-              <div class="card bg-body-secondary" style="width: 20rem;" onmouseover="dis()">
-              <div class="card-head card-img-top" style="height:15rem;">
+              <div class="card bg-body-secondary" " >
+              <div class="card-head card-img-top">
                 <img src="data:image/jpeg;base64,' . $row["image"] . ' "class="w-100 h-100 object-fit-cover">
                 <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
                 </h2>
                 <h2 class=" btn btn-transparent cate">
-                    <div class="catr position-relative">  <p class="pr">' . $row["category"] . '
+                    <div class="catr position-relative">  <p class="pr text-light">' . $row["category"] . '
                     </p>
                </div>
              
@@ -135,22 +171,22 @@ include 'connect.php';
                       <p class="card-text">' . $row["description"] . '</p>
                     </div>
                     <ul class="px-3">
-                      <li class=" d-flex justify-content-between">Published by:<img src="data:image/jpeg;base64,' . $row["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $row["username"] . '</li>
+                      <li class=" d-flex gap-2 justify-content-start">Published by:<img src="data:image/jpeg;base64,' . $row["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $row["username"] . '</li>
                       <li class=" d-flex justify-content-between"><p><i class="bi bi-clock-fill pe-2"></i>' . $row["duration"] . 'hrs</p>
                       ';
-                                    $cid = $row["course_id"];
-                                    $sqli = 'SELECT COUNT(user_id) AS total_students FROM student_courses WHERE course_id = " ' . $cid . ' " ';
-                                    $resulti = mysqli_query($con, $sqli);
-                                    if ($resulti) {
-    
-                                        while ($rowi = mysqli_fetch_assoc($resulti)) {
-                                            echo '
+              $cid = $row["course_id"];
+              $sqli = 'SELECT COUNT(user_id) AS total_students FROM student_courses WHERE course_id = " ' . $cid . ' " ';
+              $resulti = mysqli_query($con, $sqli);
+              if ($resulti) {
+
+                while ($rowi = mysqli_fetch_assoc($resulti)) {
+                  echo '
                       <P><i class="bi bi-people-fill pe-2"></i>' . $rowi["total_students"] . ' students</P>
                       </li>
                       ';
-                                        }
-                                    }
-                                    echo '
+                }
+              }
+              echo '
                                   
                       
             
@@ -214,37 +250,37 @@ include 'connect.php';
               if ($resulti) {
                 while ($rowi = mysqli_fetch_assoc($resulti)) {
                   echo '
-                          <li class="d-flex justify-content-between>Published by:<img src="data:image/jpeg;base64,' . $rowi["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $rowi["username"] . '</li>
+                          <li class="d-flex gap-2 justify-content-start>Published by:<img src="data:image/jpeg;base64,' . $rowi["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $rowi["username"] . '</li>
                           ';
                 }
               }
-                echo '
+              echo '
                       <li class=" d-flex justify-content-between"><p><i class="bi bi-clock-fill pe-2"></i>' . $row["duration"] . 'hrs</p>
                       ';
-                                    $cid = $row["course_id"];
-                                    $sqli = 'SELECT COUNT(user_id) AS total_students FROM student_courses WHERE course_id = " ' . $cid . ' " ';
-                                    $resulti = mysqli_query($con, $sqli);
-                                    if ($resulti) {
-    
-                                        while ($rowi = mysqli_fetch_assoc($resulti)) {
-                                            echo '
+              $cid = $row["course_id"];
+              $sqli = 'SELECT COUNT(user_id) AS total_students FROM student_courses WHERE course_id = " ' . $cid . ' " ';
+              $resulti = mysqli_query($con, $sqli);
+              if ($resulti) {
+
+                while ($rowi = mysqli_fetch_assoc($resulti)) {
+                  echo '
                       <P><i class="bi bi-people-fill pe-2"></i>' . $rowi["total_students"] . ' students</P>
                       </li>
                       ';
-                                        }
-                                    }
-                                    echo '
+                }
+              }
+              echo '
                                     </ul>
                       
                   </div>
                   </div>
                 ';
-                
-              }
-            }
 
+            }
           }
-        
+
+        }
+
         ?>
       </div>
     </div>

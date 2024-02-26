@@ -81,6 +81,7 @@ ul{
 
 
 .card{
+    height: 400px;
     &:hover{
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;  
     color:rgb(75, 95, 208);
@@ -91,7 +92,9 @@ ul{
         left:0;
         bottom:0;
         height:25%;
-        background-color:rgb(75, 95, 208);
+        background-color: black;
+
+        // background-color:rgb(75, 95, 208);
         width:3px;
         transition: 0.9s;
     }
@@ -101,7 +104,8 @@ ul{
         left:0;
         bottom:0;
         width:25%;
-        background-color:rgb(75, 95, 208);
+        // background-color:rgb(75, 95, 208);
+        background-color: black;
         height:3px;
         transition: 0.9s;
     }
@@ -113,9 +117,15 @@ ul{
     }
     
     &-head{
+        height:195px;
         position: relative;
-        width:100%;
-        padding: 0px 3px ;
+        // width:100%;
+        padding-left:3px ;
+        // height:10px;
+    }
+    &-body{
+        height:200px;
+        overflow: hidden;
     }
     &:hover .pre{
         opacity: 1;    

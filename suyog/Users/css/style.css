@@ -31,3 +31,9 @@
 .a:hover::before {
   height: 100%;
 }
+
+.pe {
+  color: red;
+  font-style: italic;
+  font-size: x-small;
+}

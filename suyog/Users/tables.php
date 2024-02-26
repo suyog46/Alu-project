@@ -124,7 +124,7 @@ include 'connect.php';
                                                     <th>ID</th>
                                                     <th>StudentName</th>
                                                     <th>Email</th>
-                                                    <th>Password</th>
+                                                   
                                                 </tr>
                                             </thead>
 
@@ -147,7 +147,7 @@ include 'connect.php';
                                            <td> ' . $row["user_id"] . '</td>
                                            <td> ' . $row["username"] . '</td>
                                            <td> ' . $row["email"] . '</td>
-                                           <td> ' . $row["password"] . '</td>
+                                         
                                            <td class="text-end">
                                            <a href="../Courses/cp.php?id=' . $row["user_id"] . '"  class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
                                            <a href="deletestudent.php?id= ' . $row["user_id"] . '" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></a>

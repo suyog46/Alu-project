@@ -1,17 +1,19 @@
 <?php
 include 'connect.php';
 session_start();
+// register
 if (isset($_POST['submit'])) {
     $user_name = $_POST['uname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cpassword = $_POST['pconfirm'];
+    $hashedpassword=password_hash($cpassword,PASSWORD_DEFAULT);//function
     $usertype = $_POST['logintype'];
-    if (isset($_FILES["pimage"]) && $_FILES["pimage"]["error"] == 0) {
+    if (isset($_FILES["pimage"]) && $_FILES["pimage"]["error"] == 0) { //error xaina vani
         $image = $_FILES["pimage"]["tmp_name"];
-        $imageBinary = base64_encode(file_get_contents($image));
+        $imageBinary = base64_encode(file_get_contents($image)); //binary ma encode garxa image insert
     }
-    $sqli = "SELECT * FROM users WHERE email='$email'";
+    $sqli = "SELECT * FROM users WHERE email='$email'";  //same email nahuna ko lagi
     $resulti = mysqli_query($con, $sqli);
     if (mysqli_num_rows($resulti) > 0) {
         $emailerror = "Email Already exists.";
@@ -29,7 +31,7 @@ if (isset($_POST['submit'])) {
         if (($password === $cpassword)) {
 
             $sql = "INSERT INTO users(username, email, password,usertype,userimage)
-                VALUES('$user_name', '$email', '$password','$usertype','$imageBinary')";
+                VALUES('$user_name', '$email', '$hashedpassword','$usertype','$imageBinary')";
             $result = mysqli_query($con, $sql);
             if ($result) {
                 echo '
@@ -56,27 +58,35 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<!-- for login -->
+<!-- for login php-->
 <?php
 include 'connect.php';
 if (isset($_POST['lsubmit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+    
     if (!empty($email) && !empty($password)) {
-        $sql = " SELECT * FROM users where email='$email' AND password ='$password'";
+        $sql = " SELECT * FROM users where email='$email'";
         $result = mysqli_query($con, $sql);
         $num = mysqli_num_rows($result);
-        $row = mysqli_fetch_assoc($result);
         if ($num > 0) {
-            $_SESSION['loginid'] = $row['user_id'];
-            $_SESSION['username'] = $row['username'];
-
-            $_SESSION['login'] = true;
-            $_SESSION['user'] = $email;
+            $row = mysqli_fetch_assoc($result);
+                if($row && password_verify($password,$row['password'])){
+   
+                         $_SESSION['loginid'] = $row['user_id'];
+                        $_SESSION['username'] = $row['username'];
+                         $_SESSION['login'] = true;
+                    $_SESSION['user'] = $email;
             $_SESSION['usertype'] = $row['usertype'];
             $_SESSION['userimage'] = $row['userimage'];
-        } else {
-            $invalid = "Invalid username or password";
+                }
+        
+                else {
+                    $invalid = "Invalid username or password";//value essai deko
+                }
+        } 
+        else{
+            echo'query error';
         }
     }
 }
@@ -189,7 +199,7 @@ if (isset($_POST['lsubmit'])) {
     </header>
 
 
-    <!-- Login -->
+    <!-- Login Html-->
     <div class="login bg-light ps p-5 rounded " <?php if (isset($invalid)) {
         echo 'style="display:block";';
     } else {
