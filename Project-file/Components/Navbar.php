@@ -34,12 +34,9 @@ if (isset($_POST['submit'])) {
                 VALUES('$user_name', '$email', '$hashedpassword','$usertype','$imageBinary')";
             $result = mysqli_query($con, $sql);
             if ($result) {
-                echo '
-            <script>
-        
-        alert("successfull registration,please login") ;   
-                </script> 
-                ';
+              
+          $sucess='sucessfully registered.Please login!<i class="bi bi-check-square-fill" style="margin-left:2px;"></i>';
+              
             } 
             else {
                 echo 'Insertion problem';
@@ -73,7 +70,8 @@ if (isset($_POST['lsubmit'])) {
         if ($num > 0) {
             $row = mysqli_fetch_assoc($result);
                 if($row && password_verify($password,$row['password'])){
-   
+                    $sucess = 'Hello '. $row['username'].'<i class="bi bi-check-square-fill" style="margin-left:2px;"></i>';
+
                          $_SESSION['loginid'] = $row['user_id'];
                         $_SESSION['username'] = $row['username'];
                          $_SESSION['login'] = true;
@@ -104,6 +102,7 @@ if (isset($_POST['lsubmit'])) {
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
 ">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -111,7 +110,7 @@ if (isset($_POST['lsubmit'])) {
     <header class="">
         <nav class="navbar navbar-expand-lg bg-body-transparent" id="small-sc">
             <div class="container-lg">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="../Home/index.php">
                     <img src="../Components/logo1.png"
                         alt="" id="logo">
                 </a>
@@ -197,6 +196,19 @@ if (isset($_POST['lsubmit'])) {
             </div>
 
         </nav>
+        <?php
+            if (isset($sucess)) {
+                echo '
+    <div class="sucess">
+    <p class="sucess_msg" >
+    ' . $sucess . '
+    </p>
+    </div>
+
+    ';
+                unset($sucess);
+            }
+            ?>
 
     </header>
 

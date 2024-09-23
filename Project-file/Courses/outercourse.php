@@ -1,6 +1,8 @@
 <?php
 include 'connect.php';
 include '../Components/countcourse.php';
+$sucess='YourCourses<i class="bi bi-check-square-fill" style="margin-left:2px;"></i>';
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -154,7 +156,7 @@ include '../Components/countcourse.php';
               <div class="col-4">
               <div class="card bg-body-secondary h"  style="width: 20rem;"  >
               <div class="card-head he card-img-top">
-                <img src="data:image/jpeg;base64,' . $row["image"] . ' "class="w-100 h-100 object-fit-cover">
+                <img  src="../Images/' . $row["image"] . '" class="w-100 h-100 object-fit-cover">
                 <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
                 </h2>
                 <h2 class=" btn btn-transparent cate">
@@ -223,7 +225,7 @@ include '../Components/countcourse.php';
               <div class="col-4">
               <div class="card bg-body-secondary" style="width: 20rem;" >
               <div class="card-head card-img-top ch" >
-                <img src="data:image/jpeg;base64,' . $row["image"] . ' "class="w-100 h-100 object-fit-cover">
+                <img  src="../Images/' . $row["image"] . '" class="w-100 h-100 object-fit-cover">
                 <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
                 </h2>
                 <h2 class=" btn btn-transparent cate">

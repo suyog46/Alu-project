@@ -180,19 +180,19 @@ include '../Components/countcourse.php';
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 $checked = [];
                                                 if (isset($_GET['category'])) {
-                                                    $checked = $_GET['category']; //gets the cat_name from the get method in the form of array
+                                                    $checked = $_GET['category']; //gets the category from the get method in the form of array
                                                 }
                                                 echo '
                         <div class="">
-                       <input type="checkbox" name="category[]"  id= "' . $row["cat_name"] . '" value=' . $row["cat_name"] . ' ';
-                                                if (in_array($row["cat_name"], $checked)) {
+                       <input type="checkbox" name="category[]"  id= "' . $row["category"] . '" value=' . $row["category"] . ' ';
+                                                if (in_array($row["category"], $checked)) {
                                                     echo 'checked ';
                                                 } else {
                                                     echo "";
 
                                                 }
                                                 echo '/>
-                      <label class="" for="' . $row["cat_name"] . '">' . $row["cat_name"] . '</label>
+                      <label class="" for="' . $row["category"] . '">' . $row["category"] . '</label>
                     </div>
                         ';
                                             }
@@ -285,7 +285,7 @@ include '../Components/countcourse.php';
           <div class="col-4">
           <div class="card bg-body-secondary h" style="width: 20rem;" onmouseover="dis()">
           <div class="card-head he card-img-top">
-            <img src="data:image/jpeg;base64,' . $row["image"] . ' "class="w-100 h-100 object-fit-cover">
+                <img  src="../Images/' . $row["image"] . '" class="w-100 h-100 object-fit-cover">
             <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
             </h2>
             <h2 class=" btn btn-transparent cate">

@@ -13,15 +13,20 @@ if (isset($_POST['submit'])) {
     $who = $_POST['who'];
     $category = $_POST['category'];
     if (isset($_FILES["cimage"]) && $_FILES["cimage"]["error"] == 0 && isset($_FILES['cvideo']) && $_FILES["cvideo"]["error"] == 0) {
-        $image = $_FILES["cimage"]["tmp_name"];
-        $imageBinary = base64_encode(file_get_contents($image));
+        $imagetemp = $_FILES["cimage"]["tmp_name"];
+        $imagename=$_FILES['cimage']['name'];
         $videoname = $_FILES['cvideo']['name'];
         $videotemp = $_FILES['cvideo']['tmp_name'];
         $folder = "../Videos/" . $videoname;
+        $imagefolder="../Images/" . $imagename;
         move_uploaded_file($videotemp, $folder);
+        move_uploaded_file($imagetemp, $imagefolder);
+
+      
+
         session_start();
         $uid = $_SESSION["loginid"];
-        $sql = "INSERT INTO courses(uid,title,description,price,image,overview,duration,courselevel,language,aboutyourself,detaildescription,targetaudience,category) VALUES ('$uid','$title', '$description', '$price','$imageBinary','$videoname','$duration','$courselevel','$language','$about','$detaildes','$who','$category')";
+        $sql = "INSERT INTO courses(uid,title,description,price,image,overview,duration,courselevel,language,aboutyourself,detaildescription,targetaudience,category) VALUES ('$uid','$title', '$description', '$price','$imagename','$videoname','$duration','$courselevel','$language','$about','$detaildes','$who','$category')";
         $result = mysqli_query($con, $sql);
         if ($result) {
             echo 'Successfully inserted';

@@ -15,12 +15,18 @@ $detaildes= $_POST['detaildes'];
 $who= $_POST['who'];
 
     if (isset($_FILES["cimage"]) && $_FILES["cimage"]["error"] == 0 && isset($_FILES['cvideo'])) {
-        $image = $_FILES["cimage"]["tmp_name"];
-        $imageBinary = base64_encode(file_get_contents($image));
-        $video = $_FILES['cvideo'];
+        $imagetemp = $_FILES["cimage"]["tmp_name"];
+        $imagename=$_FILES['cimage']['name'];
         $videoname = $_FILES['cvideo']['name'];
         $videotemp = $_FILES['cvideo']['tmp_name'];
         $folder = "../Videos/" . $videoname;
+        $imagefolder="../Images/" . $imagename;
+        move_uploaded_file($videotemp, $folder);
+        move_uploaded_file($imagetemp, $imagefolder);
+
+      
+
+
         move_uploaded_file($videotemp, $folder);
         session_start();
         $uid= $_SESSION["loginid"];
@@ -29,7 +35,7 @@ $who= $_POST['who'];
          title = '$title',
          description = '$description',
          price = '$price',
-         image = '$imageBinary',
+         image = '$imagename',
          overview = '$videoname',
          duration = '$duration',
          courselevel = '$courselevel',
@@ -41,12 +47,12 @@ $who= $_POST['who'];
        ";
         $result = mysqli_query($con, $sql);        
         if ($result) {
-            header("location:../Courses/outercourse.php?id=".$_SESSION['loginid'] ." ");
             echo '
             <script>
             alert("successfull update");
             </script>
             ';
+            header("location:../Courses/outercourse.php?id=".$_SESSION['loginid'] ." ");
         } else {
             echo '
             <script>

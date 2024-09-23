@@ -16,12 +16,12 @@ include '../Components/countcourse.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
 
     <section class="firstview">
 
-        <?php include '../Components/Navbar.php' ?>
+        <?php include '../Components/Navbar.php' ;
+        ?>
         <div class="view-text position-absolute">
             <h1 class="fs-1">Learning for a <span>
                     Lifetime</span></h1>
