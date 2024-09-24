@@ -138,23 +138,23 @@ include '../Components/countcourse.php';
     </section>
     <br><br>
     <section class="mb pt-5 mt-5">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-3 shadow">
+        <div class="container">
+            <div class="row gap-5">
+            <div class="col-3 shadow">
                     <div class="search">
                         <div class="search-container">
                             <div class="search-filter">
                                 <h4>Search Filters</h4>
                             </div>
                             <form action="" method="GET">
-                                <div class="location-search">
+                                <div class="location-search shadow">
                                     <label for="">Choose Courses</label>
-                                    <div class="search-bar">
+                                    <div class="search-bar ">
                                         <input id="courses" type="text" placeholder="Name of the course" name="title" />
                                         <i class="magnify fa-solid fa-magnifying-glass"></i>
                                     </div>
                                 </div>
-                                <div class="price-search">
+                                <div class="price-search shadow">
                                     <div class="price-label">
                                         <p>Price Range ( $ )</p>
                                     </div>
@@ -170,7 +170,7 @@ include '../Components/countcourse.php';
                                         </div>
                                     </div>
                                 </div>
-                                <div class="category-type">
+                                <div class="category-type shadow">
                                     <h2>Category Type</h2>
                                     <div class="category-options">
                                         <?php
@@ -232,8 +232,8 @@ include '../Components/countcourse.php';
                         </div>
                     </div>
                 </div>
-                <div class="col-9">
-                    <div class="row g-5">
+                <div class="col-8 p-5  ">
+                    <div class="row ">
                         <?php
                         $sql = "SELECT * FROM courses
              INNER JOIN users
@@ -282,28 +282,29 @@ include '../Components/countcourse.php';
                         if ($result) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '
-          <div class="col-4">
-          <div class="card bg-body-secondary h" style="width: 20rem;" onmouseover="dis()">
+          <div class="col-6  ">
+          <div class="card  h  border border-0" style="width: 22rem;" >
           <div class="card-head he card-img-top">
                 <img  src="../Images/' . $row["image"] . '" class="w-100 h-100 object-fit-cover">
             <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
             </h2>
             <h2 class=" btn btn-transparent cate">
-                <div class="catr position-relative">  <p class="pr text-light">' . $row["category"] . '
+                <div class="catr position-relative">  <p class="pr text-light fw-medium">' . $row["category"] . '
                 </p>
            </div>
          
             </h2>
-            <a href="innercourse.php?id=' . $row['course_id'] . ' " class="card-link btn btn-dark pre">Preview course</a>
             </div>
    
-                <div class="card-body b px-3">
+                <div class="card-body  px-3">
                   <h5 class="card-title">' . $row["title"] . '</h5>
                   <p class="card-text">' . $row["description"] . '</p>
+                  <a href="innercourse.php?id=' . $row['course_id'] . ' " class="card-link btn btn-dark pre">View Details</a>
                 </div>
-                <ul class="px-3">
-                  <li class=" d-flex gap-2 justify-content-start">Published by:<img src="data:image/jpeg;base64,' . $row["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $row["username"] . '</li>
-                  <li class=" d-flex justify-content-between"><p><i class="bi bi-clock-fill pe-2"></i>' . $row["duration"] . 'hrs</p>
+<hr>
+                <ul class="d-flex justify-content-between gap-2">
+                  <li class=" "><img src="data:image/jpeg;base64,' . $row["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $row["username"] . '</li>
+                  <li class=" d-flex gap-2"><p><i class="bi bi-clock-fill pe-2"></i>' . $row["duration"] . 'hrs</p>
                   ';
                                 $cid = $row["course_id"];
                                 $sqli = 'SELECT COUNT(user_id) AS total_students FROM student_courses WHERE course_id = " ' . $cid . ' " ';

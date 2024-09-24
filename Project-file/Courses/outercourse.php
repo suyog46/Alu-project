@@ -154,7 +154,7 @@ $sucess='YourCourses<i class="bi bi-check-square-fill" style="margin-left:2px;">
             while ($row = mysqli_fetch_assoc($result)) {
               echo '
               <div class="col-4">
-              <div class="card bg-body-secondary h"  style="width: 20rem;"  >
+              <div class="card  h"  style="width: 20rem;"  >
               <div class="card-head he card-img-top">
                 <img  src="../Images/' . $row["image"] . '" class="w-100 h-100 object-fit-cover">
                 <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
@@ -222,26 +222,28 @@ $sucess='YourCourses<i class="bi bi-check-square-fill" style="margin-left:2px;">
           if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
               echo '
-              <div class="col-4">
-              <div class="card bg-body-secondary" style="width: 20rem;" >
-              <div class="card-head card-img-top ch" >
+              <div class="card  h  border border-0" style="width: 22rem;" >
+          <div class="card-head he card-img-top">
                 <img  src="../Images/' . $row["image"] . '" class="w-100 h-100 object-fit-cover">
-                <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
-                </h2>
-                <h2 class=" btn btn-transparent cate">
-                    <div class="catr position-relative">  <p class="pr">' . $row["category"] . '
-                    </p>
-               </div>
-             
-                </h2>
-                <a href="innercourse.php?id=' . $row['course_id'] . ' " class="card-link btn btn-dark pre">Preview course</a>
-                </div>
+            <h2 class=" btn btn-primary price rounded-circle">$' . $row["price"] . '
+            </h2>
+            <h2 class=" btn btn-transparent cate">
+                <div class="catr position-relative">  <p class="pr text-light fw-medium">' . $row["category"] . '
+                </p>
+           </div>
+         
+            </h2>
+            </div>
        
                     <div class="card-body sb px-3">
                       <h5 class="card-title">' . $row["title"] . '</h5>
                       <p class="card-text">' . $row["description"] . '</p>
+                       <a href="innercourse.php?id=' . $row['course_id'] . ' " class="card-link btn btn-dark pre">View Details</a>
+
                     </div>
-                    <ul class="px-3">
+                    <hr>
+
+                <ul class="d-flex justify-content-between gap-2">
                     ';
               $cid = $row["course_id"];
               $sqli = 'SELECT * from courses 
@@ -252,12 +254,12 @@ $sucess='YourCourses<i class="bi bi-check-square-fill" style="margin-left:2px;">
               if ($resulti) {
                 while ($rowi = mysqli_fetch_assoc($resulti)) {
                   echo '
-                  <li class=" d-flex gap-2 justify-content-start">Published by:<img src="data:image/jpeg;base64,' . $rowi["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $rowi["username"] . '</li>
+                  <li class=" d-flex gap-2 justify-content-start"><img src="data:image/jpeg;base64,' . $rowi["userimage"] . '"class="rounded-circle object-fit-cover " height="30" width="30"> ' . $rowi["username"] . '</li>
                           ';
                 }
               }
               echo '
-                      <li class=" d-flex justify-content-between"><p><i class="bi bi-clock-fill pe-2"></i>' . $row["duration"] . 'hrs</p>
+                      <li class=" d-flex gap-2"><p><i class="bi bi-clock-fill pe-2"></i>' . $row["duration"] . 'hrs</p>
                       ';
               $cid = $row["course_id"];
               $sqli = 'SELECT COUNT(user_id) AS total_students FROM student_courses WHERE course_id = " ' . $cid . ' " ';

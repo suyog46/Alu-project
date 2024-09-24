@@ -60,18 +60,19 @@ if (isset($_POST['submit'])) {
                     echo '
         <h1 class="fw-bold fs-3">    
         </h1>
-        <div class="container shadow p-5">
+        <div class="container  p-5">
             <div class="row ">
-            <div class="col-lg-8 ">
-            <h1 class="">' . $row["title"] . '</h1>
+                <div class="col-lg-8  shadow p-5">
+            <h1 >' . $row["title"] . '</h1>
             <br>
             <video width="730" height="360" controls>
             <source src="../Videos/' . $row["overview"] . '" type="video/mp4">
         </video>
     
                 </div>
-                <div class="col-lg-4 lh-lg">
-                <h1> $' . $row["price"] . '</h1>
+                <div class="col-lg-4 detail shadow">
+
+                <h1 class="btn  btn-danger "> $' . $row["price"] . '</h1>
                  
                    ';
                     if (($_SESSION['usertype']) == "teacher"||($_SESSION['usertype'])=="Admin") {
